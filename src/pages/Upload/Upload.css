@@ -1,0 +1,449 @@
+.upload-page {
+  padding: 20px;
+  background-color: #0f0f0f;
+  min-height: calc(100vh - 56px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Changed from default center to flex-start */
+}
+
+.upload-container {
+  background-color: #181818;
+  border-radius: 12px;
+  padding: 30px;
+  width: 100%;
+  max-width: 800px;
+  margin: 20px 0;
+  max-height: calc(100vh - 96px); /* Limit maximum height */
+  overflow-y: auto; /* Allow scrolling inside container if needed */
+}
+
+.upload-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.upload-container::-webkit-scrollbar-track {
+  background: #121212;
+  border-radius: 4px;
+}
+
+.upload-container::-webkit-scrollbar-thumb {
+  background: #303030;
+  border-radius: 4px;
+}
+
+.upload-container::-webkit-scrollbar-thumb:hover {
+  background: #404040;
+}
+
+.upload-container h1 {
+  color: #fff;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  padding: 12px 16px;
+  border: 1px solid #303030;
+  background-color: #121212;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  outline: none;
+  border-color: #065fd4;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-select {
+  cursor: pointer;
+}
+
+.form-select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* File Upload Styles */
+.file-upload {
+  position: relative;
+}
+
+.file-input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.file-dropzone {
+  border: 2px dashed #303030;
+  border-radius: 8px;
+  padding: 40px 20px;
+  text-align: center;
+  transition: border-color 0.2s;
+  background-color: #121212;
+}
+
+.file-dropzone:hover {
+  border-color: #065fd4;
+}
+
+.thumbnail-dropzone {
+  padding: 20px;
+  max-width: 300px;
+}
+
+.file-placeholder {
+  color: #666;
+}
+
+.upload-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.file-hint {
+  font-size: 12px;
+  color: #888;
+  margin-top: 4px;
+}
+
+.file-selected {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.file-name {
+  font-weight: 500;
+}
+
+.file-size {
+  color: #888;
+  font-size: 12px;
+}
+
+.thumbnail-preview {
+  position: relative;
+  display: inline-block;
+}
+
+.thumbnail-preview img {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.change-thumbnail {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* Progress Bar */
+.progress-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 8px;
+  background-color: #303030;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #065fd4;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  color: #fff;
+  font-size: 14px;
+  min-width: 40px;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.cancel-btn,
+.upload-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.cancel-btn {
+  background-color: #303030;
+  color: #fff;
+}
+
+.cancel-btn:hover:not(:disabled) {
+  background-color: #404040;
+}
+
+.upload-btn {
+  background-color: #065fd4;
+  color: #fff;
+}
+
+.upload-btn:hover:not(:disabled) {
+  background-color: #054daa;
+}
+
+.upload-btn:disabled,
+.cancel-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Messages */
+.error-message {
+  background-color: #cc0000;
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.success-message {
+  background-color: #00a700;
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Error styles */
+.field-error {
+  color: #ff4d4d;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}
+
+.form-input.error,
+.form-textarea.error,
+.form-select.error {
+  border-color: #ff4d4d;
+}
+
+.form-input.error:focus,
+.form-textarea.error:focus,
+.form-select.error:focus {
+  border-color: #ff4d4d;
+  box-shadow: 0 0 0 2px rgba(255, 77, 77, 0.2);
+}
+
+.file-dropzone.error {
+  border-color: #ff4d4d;
+}
+
+/* Loading text */
+.loading-text {
+  color: #888;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .upload-page {
+    padding: 10px;
+    align-items: flex-start;
+  }
+  
+  .upload-container {
+    padding: 20px;
+    margin: 10px 0;
+    max-height: calc(100vh - 76px);
+  }
+  
+  .upload-container h1 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .cancel-btn,
+  .upload-btn {
+    width: 100%;
+  }
+  
+  .thumbnail-dropzone {
+    max-width: 100%;
+  }
+  
+  .file-dropzone {
+    padding: 30px 15px;
+  }
+  
+  .upload-form {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .upload-page {
+    padding: 5px;
+  }
+  
+  .upload-container {
+    padding: 15px;
+    max-height: calc(100vh - 66px);
+  }
+  
+  .upload-form {
+    gap: 16px;
+  }
+  
+  .file-dropzone {
+    padding: 20px 10px;
+  }
+  
+  .progress-section {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .progress-bar {
+    width: 100%;
+  }
+  
+  .form-actions {
+    margin-top: 20px;
+  }
+}
+
+/* Prevent body scrolling when upload container is scrollable */
+body.upload-open {
+  overflow: hidden;
+}
+
+/* Enhanced action button styles */
+.action-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.action-btn:disabled:hover {
+  background-color: #272727;
+}
+
+.action-btn:disabled.active {
+  opacity: 0.8;
+}
+
+.action-btn.active:disabled:hover {
+  background-color: #065fd4;
+}
+
+.action-btn.active.dislike:disabled:hover {
+  background-color: #065fd4; /* Or a different color for dislike */
+}
+
+/* Loading animation for buttons */
+.action-btn:disabled::after {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-left: 8px;
+  border: 2px solid transparent;
+  border-top: 2px solid #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Tooltip styles */
+.action-btn {
+  position: relative;
+}
+
+.action-btn[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 1000;
+}
+
+.action-btn[title]:hover::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% - 5px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #000;
+}

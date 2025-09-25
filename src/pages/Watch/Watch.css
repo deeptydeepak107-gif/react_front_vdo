@@ -1,0 +1,535 @@
+.watch-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: calc(100vh - 56px);
+  box-sizing: border-box;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  background-color: #121212; /* Ensure contrast with sidebar */
+  position: relative;
+  z-index: 1; /* Keeps video above sidebar overlay */
+}
+
+.video-container {
+  margin-bottom: 24px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #000;
+  position: relative;
+  z-index: 1; /* Ensures video stays above sidebar */
+}
+
+.video-player {
+  width: 100%;
+  background-color: #000;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.video-element {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+}
+
+/* --- Info, actions, channel --- */
+.video-info-section {
+  background-color: #181818;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  z-index: 1;
+  position: relative;
+}
+
+.video-title {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.video-meta {
+  display: flex;
+  gap: 16px;
+  color: #aaa;
+  margin-bottom: 16px;
+  font-size: 14px;
+  flex-wrap: wrap;
+}
+
+.video-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #272727;
+  flex-wrap: wrap;
+  justify-content: center; /* Center buttons on mobile */
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  background-color: #272727;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+  flex: 1;
+  min-width: 80px;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.action-btn:hover {
+  background-color: #3d3d3d;
+}
+
+.action-btn.active {
+  background-color: #065fd4;
+}
+
+.action-btn.active:hover {
+  background-color: #054daa;
+}
+
+.channel-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #272727;
+  flex-wrap: wrap;
+}
+
+.channel-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.channel-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.channel-details h3 {
+  color: #fff;
+  margin-bottom: 4px;
+  font-size: 1.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.channel-details p {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.subscribe-btn {
+  padding: 10px 20px;
+  background-color: #cc0000;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.subscribe-btn:hover {
+  background-color: #a10000;
+}
+
+.video-description {
+  color: #fff;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+.loading,
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  background-color: #181818;
+  border-radius: 12px;
+  margin: 20px;
+  padding: 20px;
+}
+
+.loading {
+  color: #aaa;
+}
+
+.error {
+  color: #ff4d4d;
+  text-align: center;
+}
+
+/* --- Responsive tweaks --- */
+@media (max-width: 768px) {
+  .watch-page {
+    padding: 10px;
+    min-height: calc(100vh - 56px);
+    overflow-y: auto;
+  }
+
+  .video-info-section {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .video-title {
+    font-size: 1.3rem;
+  }
+
+  .video-meta {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .video-actions {
+    gap: 8px;
+  }
+
+  .action-btn {
+    padding: 8px 12px;
+    font-size: 12px;
+    min-width: 70px;
+  }
+
+  .channel-avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .subscribe-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    width: 100%;
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 389px) {
+  .video-actions {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .action-btn {
+    width: 100%;
+  }
+
+  .channel-info {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .channel-details {
+    text-align: center;
+  }
+
+  .subscribe-btn {
+    width: 100%;
+  }
+
+  .video-meta {
+    text-align: center;
+  }
+}
+
+/* Watch.css - Add these styles */
+..playlist-manager {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.loading {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+}
+
+.error {
+  color: #ff0000;
+  text-align: center;
+  padding: 20px;
+}
+.playlist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.playlist-header h3 {
+  margin: 0;
+  color: #333;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  padding: 5px;
+}
+
+.close-btn:hover {
+  color: #333;
+}
+
+.playlist-actions {
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+  background: #ff0000;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  background: #cc0000;
+}
+
+.playlists-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.playlist-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 10px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+
+.playlist-info h4 {
+  margin: 0 0 5px 0;
+  color: #333;
+}
+
+.video-count {
+  margin: 0;
+  color: #666;
+  font-size: 0.9em;
+}
+
+.playlist-description {
+  margin: 5px 0 0 0;
+  color: #666;
+  font-size: 0.9em;
+}
+
+.privacy-badge {
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8em;
+  margin-top: 5px;
+  display: inline-block;
+}
+
+.privacy-badge.public {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.privacy-badge.private {
+  background: #f5f5f5;
+  color: #666;
+}
+
+.toggle-btn {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9em;
+  min-width: 80px;
+}
+
+.toggle-btn.add {
+  background: white;
+  color: #ff0000;
+  border-color: #ff0000;
+}
+
+.toggle-btn.remove {
+  background: #ff0000;
+  color: white;
+  border-color: #ff0000;
+}
+
+.toggle-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Modal overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0;
+}
+
+.checkbox-group small {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.modal-actions button {
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-actions button[type="submit"] {
+  background: #ff0000;
+  color: white;
+  border-color: #ff0000;
+}
+
+/* Subscription button styles */
+.subscribe-btn {
+  padding: 10px 20px;
+  border: 1px solid #ff0000;
+  background: #ff0000;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.subscribe-btn.subscribed {
+  background: transparent;
+  color: #666;
+  border-color: #666;
+}
+
+.subscribe-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.empty-playlists {
+  text-align: center;
+  padding: 40px 20px;
+  color: #666;
+}
+
+.error-message {
+  background: #ffebee;
+  color: #c62828;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 10px;
+}
